@@ -32,6 +32,11 @@ main{position:relative;z-index:1;width:100%;max-width:520px;padding:44px 22px 56
 .logo .wm{font-family:'Manrope';font-weight:800;font-size:24px;color:var(--cream);letter-spacing:.05em}
 .logo em{font-style:normal;color:var(--sage)}
 
+.fieldshot{width:100%;margin-top:26px;border-radius:18px;overflow:hidden;border:1px solid var(--line-strong);box-shadow:0 24px 60px rgba(0,0,0,.45);position:relative}
+.fieldshot img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:center 72%}
+.fieldshot .fs-chip{position:absolute;top:14px;left:14px;background:rgba(10,20,16,.82);backdrop-filter:blur(6px);border:1px solid rgba(200,155,60,.45);color:#E5C77E;font-size:12px;font-weight:700;border-radius:100px;padding:6px 13px}
+.fieldshot .fs-cap{position:absolute;left:0;right:0;bottom:0;padding:36px 18px 14px;background:linear-gradient(180deg,transparent,rgba(10,20,16,.92));font-size:13px;color:var(--text);line-height:1.5}
+.fieldshot .fs-cap b{color:var(--light-sage)}
 .jake{width:100%;margin-top:26px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:14px;padding:20px 20px 18px}
 .jake h4{font-family:'Manrope';font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
 .jake p{font-size:13.5px;color:var(--muted);line-height:1.7}
@@ -178,6 +183,12 @@ footer{position:relative;z-index:1;padding:22px;font-size:12px;color:var(--faint
     </div>
   </div>
 
+  <div class="fieldshot">
+    <span class="fs-chip">Field test day</span>
+    <img src="field-test.jpg" alt="Jake and Jonathan in the field in Colorado on the morning they tested ScoutIQ" loading="lazy" onerror="this.parentElement.style.display='none'">
+    <div class="fs-cap"><b>This isn't stock photography.</b> That's us, the morning we tested ScoutIQ in the field. The app called it, and we found two herds.</div>
+  </div>
+
   <div class="jake">
     <h4>A note from Jake</h4>
     <p>I built this because I'm a hunter who was tired of guessing. Jonathan and I tested it in the field last weekend and it put us on two herds. But it's early. It won't always be right, and some things are still rough around the edges.</p>
@@ -196,7 +207,7 @@ footer{position:relative;z-index:1;padding:22px;font-size:12px;color:var(--faint
 <script>
 /* ================= CONFIG ================= */
 const APP_URL='https://jacob-runner.github.io/Scout-IQ-MOBILE/';
-const FORMSPREE_ENDPOINT='https://formspree.io/f/YOUR_FORM_ID'; // replace YOUR_FORM_ID after creating the form at formspree.io
+const FORMSPREE_ENDPOINT='https://formspree.io/f/xykrgrel';
 /* ========================================== */
 
 const form=document.getElementById('gateForm'),
