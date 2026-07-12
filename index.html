@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScoutIQ Beta | Get Access</title>
+<meta name="description" content="Enter your name and email to access the ScoutIQ Colorado elk scouting beta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A1410;--surface:#10231B;--surface-2:#142A20;
+  --line:rgba(183,228,199,.09);--line-strong:rgba(183,228,199,.18);
+  --cream:#F8F7F3;--text:#E9EDE9;--muted:#93A89B;--faint:#6B8074;
+  --sage:#74C69D;--light-sage:#B7E4C7;--pine:#40916C;--gold:#C89B3C;
+  --err:#E07A5F;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
+  min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;
+  align-items:center;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;
+}
+::selection{background:rgba(116,198,157,.3)}
+.topo{position:fixed;inset:0;pointer-events:none;opacity:.55;z-index:0}
+.glow{position:fixed;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(45,106,79,.3),transparent 65%);top:-260px;right:-200px;pointer-events:none;z-index:0}
+main{position:relative;z-index:1;width:100%;max-width:520px;padding:44px 22px 56px;display:flex;flex-direction:column;align-items:center;flex:1}
+
+.logo{display:flex;align-items:center;gap:12px;margin-bottom:34px}
+.logo-mark{width:40px;height:40px;border-radius:11px;background:linear-gradient(160deg,#2D6A4F,#1B4332);display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.logo .wm{font-family:'Manrope';font-weight:800;font-size:24px;color:var(--cream);letter-spacing:.05em}
+.logo em{font-style:normal;color:var(--sage)}
+
+.jake{width:100%;margin-top:26px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:14px;padding:20px 20px 18px}
+.jake h4{font-family:'Manrope';font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.jake p{font-size:13.5px;color:var(--muted);line-height:1.7}
+.jake p+p{margin-top:10px}
+.jake .sig{margin-top:12px;font-size:13px;color:var(--light-sage);font-weight:600}
+
+.pill{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;color:var(--light-sage);background:rgba(116,198,157,.09);border:1px solid rgba(116,198,157,.22);border-radius:100px;padding:7px 15px;margin-bottom:20px;letter-spacing:.02em}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--sage);animation:pulse 2.2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(116,198,157,.5)}55%{box-shadow:0 0 0 7px rgba(116,198,157,0)}}
+
+h1{font-family:'Manrope';font-weight:800;font-size:clamp(28px,7.6vw,38px);line-height:1.15;letter-spacing:-.02em;color:var(--cream);text-align:center;margin-bottom:14px}
+h1 .accent{color:var(--sage)}
+.sub{font-size:15.5px;color:var(--muted);text-align:center;line-height:1.65;max-width:420px;margin-bottom:30px}
+
+.proof{display:flex;gap:10px;width:100%;margin-bottom:30px}
+.proof div{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:13px 8px;text-align:center}
+.proof b{display:block;font-family:'Manrope';font-weight:800;font-size:19px;color:var(--cream)}
+.proof span{font-size:11px;color:var(--faint);line-height:1.3;display:block;margin-top:3px}
+.proof b em{font-style:normal;color:var(--sage)}
+
+.card{width:100%;background:linear-gradient(165deg,var(--surface-2),var(--surface));border:1px solid var(--line-strong);border-radius:20px;padding:28px 24px;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.card h2{font-family:'Manrope';font-weight:700;font-size:18px;color:var(--cream);margin-bottom:4px}
+.card .ch{font-size:13.5px;color:var(--faint);margin-bottom:22px}
+
+.fgroup{margin-bottom:16px}
+.fgroup label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:8px}
+.fgroup input{
+  width:100%;background:rgba(10,20,16,.6);border:1px solid var(--line-strong);
+  border-radius:12px;padding:14px 16px;font-size:16px;color:var(--cream);
+  font-family:'Inter';outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.fgroup input::placeholder{color:var(--faint)}
+.fgroup input:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(116,198,157,.12)}
+.fgroup.bad input{border-color:var(--err);box-shadow:0 0 0 3px rgba(224,122,95,.12)}
+.fgroup.good input{border-color:rgba(116,198,157,.5)}
+.fmsg{display:none;font-size:12.5px;margin-top:7px;line-height:1.45}
+.fgroup.bad .fmsg{display:block;color:var(--err)}
+.fmsg.suggest{display:block;color:var(--gold);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+
+.btn{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--gold);color:#141005;font-family:'Inter';font-weight:700;font-size:16px;
+  border:none;border-radius:13px;padding:16px;cursor:pointer;margin-top:6px;
+  transition:transform .2s,box-shadow .2s,opacity .2s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,155,60,.32)}
+.btn:disabled{opacity:.6;cursor:wait;transform:none;box-shadow:none}
+.fine{font-size:12px;color:var(--faint);text-align:center;margin-top:14px;line-height:1.55}
+
+/* success state */
+.success{display:none;text-align:center;padding:14px 0 6px}
+.success.show{display:block;animation:rise .5s cubic-bezier(.16,1,.3,1)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.check{width:64px;height:64px;border-radius:50%;background:rgba(116,198,157,.12);border:1.5px solid var(--sage);display:grid;place-items:center;margin:0 auto 18px}
+.success h3{font-family:'Manrope';font-weight:800;font-size:22px;color:var(--cream);margin-bottom:8px}
+.success p{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:22px}
+.success p b{color:var(--light-sage)}
+.btn.go{background:var(--sage);color:#0A1410;text-decoration:none}
+.btn.go:hover{box-shadow:0 12px 30px rgba(116,198,157,.3)}
+.count{font-size:12.5px;color:var(--faint);margin-top:12px}
+
+.feedback{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:13px;color:var(--muted);line-height:1.6;display:flex;gap:12px;align-items:flex-start}
+.feedback svg{flex-shrink:0;margin-top:2px}
+footer{position:relative;z-index:1;padding:22px;font-size:12px;color:var(--faint);text-align:center}
+</style>
+</head>
+<body>
+
+<svg class="topo" width="100%" height="100%" viewBox="0 0 800 1200" preserveAspectRatio="xMidYMid slice" fill="none">
+  <g stroke="rgba(116,198,157,.07)" stroke-width="1.2">
+    <path d="M-60 950 C 160 860, 320 1000, 520 900 S 780 830, 880 920"/>
+    <path d="M-60 1010 C 180 920, 340 1070, 540 965 S 790 895, 880 985"/>
+    <path d="M-60 1075 C 200 985, 360 1140, 560 1030 S 800 960, 880 1050"/>
+    <path d="M-40 150 C 180 70, 360 210, 560 110 S 790 40, 880 140"/>
+    <path d="M-40 90 C 200 10, 380 150, 580 55 S 800 -20, 880 80"/>
+    <path d="M-40 215 C 160 135, 340 275, 540 175 S 780 105, 880 205"/>
+  </g>
+</svg>
+<div class="glow"></div>
+
+<main>
+  <div class="logo">
+    <span class="logo-mark">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#B7E4C7">
+        <ellipse cx="9.2" cy="9.2" rx="2.7" ry="4.8" transform="rotate(-13 9.2 9.2)"/>
+        <ellipse cx="14.8" cy="9.2" rx="2.7" ry="4.8" transform="rotate(13 14.8 9.2)"/>
+        <ellipse cx="8.6" cy="18" rx="1.4" ry="2.3" transform="rotate(-18 8.6 18)"/>
+        <ellipse cx="15.4" cy="18" rx="1.4" ry="2.3" transform="rotate(18 15.4 18)"/>
+      </svg>
+    </span>
+    <span class="wm">SCOUT<em>IQ</em></span>
+  </div>
+
+  <div class="pill"><span class="dot"></span>Private beta · Colorado elk · Free</div>
+
+  <h1>The elk-finding map from the post. <span class="accent">Get in.</span></h1>
+  <p class="sub">ScoutIQ overlays terrain, habitat, weather, and pressure data to show where elk should be in your unit this week. We field-tested it last weekend. It found two herds.</p>
+
+  <div class="proof">
+    <div><b><em>2</em></b><span>herds located first weekend</span></div>
+    <div><b>54<em>+</em></b><span>Colorado units live</span></div>
+    <div><b><em>6</em></b><span>data engines behind the map</span></div>
+  </div>
+
+  <div class="card">
+    <div id="formView">
+      <h2>Get beta access</h2>
+      <div class="ch">Real name and a working email. That's the whole price.</div>
+      <form id="gateForm" novalidate>
+        <div class="fgroup" id="gName">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" placeholder="First and last name" autocomplete="name" maxlength="60">
+          <div class="fmsg" id="nameMsg"></div>
+        </div>
+        <div class="fgroup" id="gEmail">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" inputmode="email" maxlength="80">
+          <div class="fmsg" id="emailMsg"></div>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+        <button type="submit" class="btn" id="submitBtn">
+          Unlock the scout tool
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#141005" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="fine">Free during the Colorado beta. We'll only email you about ScoutIQ. No spam, unsubscribe anytime.</div>
+      </form>
+    </div>
+
+    <div class="success" id="successView">
+      <div class="check">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 8" stroke="#74C69D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 id="successTitle">You're in.</h3>
+      <p>Pick your species, season, and unit, and the map does the rest. <b>Tell us what it gets right and what it gets wrong.</b> Every report makes the model sharper.</p>
+      <a class="btn go" id="goBtn" href="#">
+        Open ScoutIQ
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#0A1410" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div class="count" id="countMsg"></div>
+    </div>
+  </div>
+
+  <div class="jake">
+    <h4>A note from Jake</h4>
+    <p>I built this because I'm a hunter who was tired of guessing. Jonathan and I tested it in the field last weekend and it put us on two herds. But it's early. It won't always be right, and some things are still rough around the edges.</p>
+    <p>Hunting is what we love, and that's the whole reason this exists. We'll keep making it better on the regular. We both have day jobs, so if a fix takes a few days, that's why. Be patient with us, and tell us what the map gets right and wrong. That's how this gets good for all of us.</p>
+    <div class="sig">Jake · Co-builder, ScoutIQ</div>
+  </div>
+
+  <div class="feedback">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.9 8.9 0 01-3.9-.9L3 20l1.1-4A8.4 8.4 0 1121 11.5z" stroke="#74C69D" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    <span>This is an early build. If the forecast is off for your unit, reply to the post or the welcome email and tell us. Accuracy reports are the most valuable thing you can send.</span>
+  </div>
+</main>
+
+<footer>© 2026 ScoutIQ · Scout smarter. Hunt confidently.</footer>
+
+<script>
+/* ================= CONFIG ================= */
+const APP_URL='https://jacob-runner.github.io/Scout-IQ-MOBILE/';
+const FORMSPREE_ENDPOINT='https://formspree.io/f/YOUR_FORM_ID'; // replace YOUR_FORM_ID after creating the form at formspree.io
+/* ========================================== */
+
+const form=document.getElementById('gateForm'),
+      nameIn=document.getElementById('name'),emailIn=document.getElementById('email'),
+      gName=document.getElementById('gName'),gEmail=document.getElementById('gEmail'),
+      nameMsg=document.getElementById('nameMsg'),emailMsg=document.getElementById('emailMsg'),
+      btn=document.getElementById('submitBtn'),
+      formView=document.getElementById('formView'),successView=document.getElementById('successView'),
+      goBtn=document.getElementById('goBtn'),countMsg=document.getElementById('countMsg'),
+      successTitle=document.getElementById('successTitle');
+goBtn.href=APP_URL;
+
+/* ---------- Name validation ---------- */
+const junkWords=['test','testing','asdf','asdas','qwerty','fake','none','noname','name','abc','xyz','aaa','bbb','lol','na','nil','null','undefined','user','admin','hunter','anon','anonymous','firstname','lastname','fname','lname'];
+function validateName(raw){
+  const v=raw.trim().replace(/\s+/g,' ');
+  if(!v)return 'Enter your name.';
+  if(!/^[A-Za-zÀ-ÖØ-öø-ÿ' .-]+$/.test(v))return 'Names can only contain letters, spaces, hyphens, and apostrophes.';
+  const parts=v.split(' ').filter(Boolean);
+  if(parts.length<2)return 'Enter your first and last name.';
+  for(const p of parts){
+    const clean=p.toLowerCase().replace(/[^a-zà-öø-ÿ]/g,'');
+    if(clean.length<2)return 'Each part of your name needs at least 2 letters.';
+    if(/(.)\1\1/.test(clean))return 'That doesn’t look like a real name.';
+    if(junkWords.includes(clean))return 'Please use your real name.';
+    if(!/[aeiouyà-öø-ÿ]/.test(clean))return 'That doesn’t look like a real name.';
+  }
+  return '';
+}
+
+/* ---------- Email validation ---------- */
+const disposable=['mailinator.com','guerrillamail.com','sharklasers.com','10minutemail.com','tempmail.com','temp-mail.org','yopmail.com','throwawaymail.com','getnada.com','maildrop.cc','trashmail.com','fakeinbox.com','dispostable.com','mintemail.com','mailnesia.com','spamgourmet.com','mytemp.email','tempinbox.com','burnermail.io','mail-temp.com','emailondeck.com','moakt.com','tmpmail.org','mohmal.com','minuteinbox.com'];
+const commonDomains=['gmail.com','yahoo.com','outlook.com','hotmail.com','icloud.com','aol.com','protonmail.com','comcast.net','me.com','live.com','msn.com','ymail.com'];
+const typoMap={'gmial.com':'gmail.com','gamil.com':'gmail.com','gmali.com':'gmail.com','gnail.com':'gmail.com','gmaill.com':'gmail.com','gmail.co':'gmail.com','gmail.con':'gmail.com','gmail.cm':'gmail.com','yahooo.com':'yahoo.com','yaho.com':'yahoo.com','yahoo.co':'yahoo.com','yahoo.con':'yahoo.com','hotmial.com':'hotmail.com','hotmal.com':'hotmail.com','hotmai.com':'hotmail.com','hotmail.co':'hotmail.com','outlok.com':'outlook.com','outloo.com':'outlook.com','outlook.co':'outlook.com','iclod.com':'icloud.com','icoud.com':'icloud.com','iclould.com':'icloud.com','coman.com':'comcast.net'};
+const junkLocal=['test','testing','asdf','fake','abc','xyz','aaa','qwerty','example','sample','noreply','no-reply','nobody','spam','junk'];
+let emailSuggestion='';
+function validateEmail(raw){
+  emailSuggestion='';
+  const v=raw.trim().toLowerCase();
+  if(!v)return 'Enter your email.';
+  if(!/^[a-z0-9](\.?[a-z0-9_%+-]+)*@[a-z0-9](-?[a-z0-9.])*\.[a-z]{2,}$/.test(v))return 'That email doesn’t look valid. Check the format.';
+  const [local,domain]=v.split('@');
+  if(junkLocal.includes(local.replace(/[0-9]/g,'')))return 'Please use your real email address.';
+  if(/(.)\1\1\1/.test(local))return 'That email doesn’t look real.';
+  if(domain==='example.com'||domain==='email.com'||domain==='test.com'||domain==='domain.com')return 'Please use your real email address.';
+  if(disposable.includes(domain))return 'Temporary email addresses don’t work here. Use your real one.';
+  if(typoMap[domain]){emailSuggestion=local+'@'+typoMap[domain];return 'SUGGEST';}
+  // distance-1 typo check against common domains (skip if the domain is already a known-good one)
+  if(!commonDomains.includes(domain)){
+    for(const cd of commonDomains){
+      if(dist1(domain,cd)){emailSuggestion=local+'@'+cd;return 'SUGGEST';}
+    }
+  }
+  return '';
+}
+function dist1(a,b){
+  if(Math.abs(a.length-b.length)>1)return false;
+  let i=0,j=0,edits=0;
+  while(i<a.length&&j<b.length){
+    if(a[i]===b[j]){i++;j++;continue;}
+    edits++;if(edits>1)return false;
+    if(a.length>b.length)i++;else if(b.length>a.length)j++;else{i++;j++;}
+  }
+  return (edits+(a.length-i)+(b.length-j))===1;
+}
+
+/* ---------- Field wiring ---------- */
+function setState(group,msgEl,err,suggest){
+  group.classList.remove('bad','good');msgEl.classList.remove('suggest');
+  if(err==='SUGGEST'){
+    msgEl.classList.add('suggest');
+    msgEl.textContent='Did you mean '+suggest+'? Tap to use it.';
+    group.classList.add('bad');
+    return false;
+  }
+  if(err){group.classList.add('bad');msgEl.textContent=err;return false;}
+  group.classList.add('good');msgEl.textContent='';
+  return true;
+}
+nameIn.addEventListener('blur',()=>{if(nameIn.value)setState(gName,nameMsg,validateName(nameIn.value));});
+emailIn.addEventListener('blur',()=>{if(emailIn.value)setState(gEmail,emailMsg,validateEmail(emailIn.value),emailSuggestion);});
+[nameIn,emailIn].forEach(el=>el.addEventListener('input',()=>{el.closest('.fgroup').classList.remove('bad');}));
+emailMsg.addEventListener('click',()=>{
+  if(emailMsg.classList.contains('suggest')&&emailSuggestion){
+    emailIn.value=emailSuggestion;
+    setState(gEmail,emailMsg,validateEmail(emailIn.value),emailSuggestion);
+  }
+});
+
+/* ---------- Submit ---------- */
+function unlock(name){
+  formView.style.display='none';
+  successView.classList.add('show');
+  const first=name.split(' ')[0];
+  successTitle.textContent='You’re in, '+first+'.';
+  let c=6;
+  countMsg.textContent='Opening the app in '+c+'s…';
+  const iv=setInterval(()=>{
+    c--;
+    if(c<=0){clearInterval(iv);window.location.href=APP_URL;return;}
+    countMsg.textContent='Opening the app in '+c+'s…';
+  },1000);
+  goBtn.addEventListener('click',()=>clearInterval(iv));
+}
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(document.getElementById('website').value)return; // bot
+  const nOK=setState(gName,nameMsg,validateName(nameIn.value));
+  const eOK=setState(gEmail,emailMsg,validateEmail(emailIn.value),emailSuggestion);
+  if(!nOK||!eOK)return;
+  btn.disabled=true;btn.textContent='Checking…';
+  const payload={name:nameIn.value.trim().replace(/\s+/g,' '),email:emailIn.value.trim().toLowerCase(),source:'beta-gate',ts:new Date().toISOString()};
+  try{
+    if(!FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')){
+      await fetch(FORMSPREE_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+    }
+  }catch(err){/* never block a hunter on a network hiccup */}
+  try{localStorage.setItem('scoutiq_beta',JSON.stringify(payload));}catch(err){}
+  unlock(payload.name);
+});
+
+/* ---------- Returning visitor ---------- */
+try{
+  const prev=JSON.parse(localStorage.getItem('scoutiq_beta')||'null');
+  if(prev&&prev.email){
+    formView.style.display='none';
+    successView.classList.add('show');
+    successTitle.textContent='Welcome back, '+prev.name.split(' ')[0]+'.';
+    countMsg.textContent='';
+  }
+}catch(err){}
+</script>
+</body>
+</html>
