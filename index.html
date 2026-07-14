@@ -33,6 +33,26 @@ main{position:relative;z-index:1;width:100%;max-width:520px;padding:44px 22px 56
 .logo .wm{font-family:'Manrope';font-weight:800;font-size:24px;color:var(--cream);letter-spacing:.05em}
 .logo em{font-style:normal;color:var(--sage)}
 
+/* value prop */
+.vp{width:100%;margin-top:34px;text-align:center}
+.vp .vp-k{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.vp h2{font-family:'Manrope';font-weight:800;font-size:24px;line-height:1.2;letter-spacing:-.01em;color:var(--cream);margin-bottom:12px}
+.vp h2 em{font-style:normal;color:var(--sage)}
+.vp .vp-p{font-size:14px;color:var(--muted);line-height:1.65;max-width:430px;margin:0 auto 24px}
+.vp-tri{display:flex;gap:10px}
+.vp-tri .t{flex:1;background:var(--surface);border:1px solid rgba(116,198,157,.22);border-radius:15px;padding:18px 10px 16px}
+.vp-tri .t b{display:block;font-family:'Manrope';font-weight:800;font-size:30px;color:var(--sage);line-height:1;margin-bottom:6px}
+.vp-tri .t i{display:block;font-style:normal;font-size:13.5px;font-weight:700;color:var(--cream);margin-bottom:5px}
+.vp-tri .t span{font-size:11.5px;color:var(--faint);line-height:1.45;display:block}
+.vp-tag{font-size:12px;font-weight:700;color:var(--light-sage);letter-spacing:.08em;text-transform:uppercase;margin-top:12px}
+.vp-plus{font-family:'Manrope';font-weight:800;font-size:22px;color:var(--gold);margin:14px 0 10px}
+.vp-when{background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:18px 16px}
+.vp-when h5{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:12px;font-family:'Inter'}
+.vp-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.vp-chips span{font-size:12.5px;font-weight:600;color:#E5C77E;background:rgba(200,155,60,.1);border:1px solid rgba(200,155,60,.28);border-radius:100px;padding:6px 13px}
+.vp-line{margin-top:18px;font-size:14.5px;color:var(--text);line-height:1.6;font-weight:500}
+.vp-line b{color:var(--sage)}
+
 .fieldshot{width:100%;margin-top:26px;border-radius:18px;overflow:hidden;border:1px solid var(--line-strong);box-shadow:0 24px 60px rgba(0,0,0,.45);position:relative}
 .fieldshot img{width:100%;display:block;aspect-ratio:1/1;object-fit:cover;object-position:center bottom}
 .fieldshot .fs-chip{position:absolute;top:14px;left:14px;background:rgba(10,20,16,.82);backdrop-filter:blur(6px);border:1px solid rgba(200,155,60,.45);color:#E5C77E;font-size:12px;font-weight:700;border-radius:100px;padding:6px 13px}
@@ -188,6 +208,30 @@ footer{position:relative;z-index:1;padding:22px;font-size:12px;color:var(--faint
       </a>
       <div class="count" id="countMsg"></div>
     </div>
+  </div>
+
+  <div class="vp">
+    <div class="vp-k">How ScoutIQ thinks</div>
+    <h2>We visualize the <em>where</em>. Then we predict the <em>when</em>.</h2>
+    <p class="vp-p">Every elk on the mountain needs three things, every single day. ScoutIQ maps all three across your unit, then layers on the conditions that shift them hour by hour.</p>
+    <div class="vp-tri">
+      <div class="t"><b>W</b><i>Water</i><span>Springs, seeps, creeks, and tanks they hit daily</span></div>
+      <div class="t"><b>F</b><i>Food</i><span>Feed zones, burns, and meadows worth the walk</span></div>
+      <div class="t"><b>B</b><i>Bedding</i><span>Dark timber and north slopes where they hole up</span></div>
+    </div>
+    <div class="vp-tag">The W·F·B Triangle</div>
+    <div class="vp-plus">+</div>
+    <div class="vp-when">
+      <h5>The shifts that move them</h5>
+      <div class="vp-chips">
+        <span>Real-time weather</span>
+        <span>Barometric pressure</span>
+        <span>Lunar cycles</span>
+        <span>Thermals</span>
+        <span>Hunter pressure</span>
+      </div>
+    </div>
+    <div class="vp-line">Your mapping app shows you every acre. <b>ScoutIQ lights up the ones holding elk right now.</b></div>
   </div>
 
   <div class="fieldshot">
