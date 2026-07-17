@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScoutIQ — Colorado OTC Elk Unit Matcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1B4332; --green:#2D6A4F; --pine:#40916C; --sage:#74C69D;
+    --lightsage:#B7E4C7; --cream:#F8F7F3; --charcoal:#333333; --gold:#C89B3C;
+    --radius:16px; --shadow:0 6px 24px rgba(27,67,50,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Inter',-apple-system,system-ui,sans-serif;
+    background:var(--cream); color:var(--charcoal);
+    -webkit-font-smoothing:antialiased; line-height:1.5;
+    padding:24px 16px;
+  }
+  .wrap{max-width:620px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .logo{
+    width:34px;height:34px;border-radius:9px;
+    background:var(--forest);display:grid;place-items:center;
+  }
+  .logo svg{width:20px;height:20px}
+  .brand h1{font-size:20px;font-weight:700;color:var(--forest);letter-spacing:-.02em}
+  .brand h1 span{color:var(--pine)}
+  .sub{color:#5b6b63;font-size:14px;margin-bottom:22px}
+  .card{
+    background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:26px 24px;margin-bottom:18px;
+  }
+  .q{margin-bottom:22px}
+  .q:last-child{margin-bottom:0}
+  .q .num{font-size:12px;font-weight:600;color:var(--pine);text-transform:uppercase;letter-spacing:.06em}
+  .q h3{font-size:16px;font-weight:600;color:var(--forest);margin:4px 0 12px}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:460px){.opts{grid-template-columns:1fr}}
+  .opt{
+    border:1.5px solid #e3e8e4;background:#fff;border-radius:12px;
+    padding:12px 14px;font-size:14px;font-weight:500;color:var(--charcoal);
+    cursor:pointer;transition:all .15s;text-align:left;
+  }
+  .opt:hover{border-color:var(--sage);background:#fbfdfb}
+  .opt.sel{border-color:var(--pine);background:var(--lightsage);color:var(--forest);font-weight:600}
+  .cta-btn{
+    width:100%;border:none;border-radius:12px;padding:15px;
+    background:var(--forest);color:#fff;font-family:inherit;font-size:16px;font-weight:600;
+    cursor:pointer;transition:all .15s;
+  }
+  .cta-btn:hover{background:var(--green)}
+  .cta-btn:disabled{background:#c7d1cb;cursor:not-allowed}
+  .results{display:none}
+  .results.show{display:block;animation:fade .3s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .rhead{font-size:18px;font-weight:700;color:var(--forest);margin-bottom:4px}
+  .rsub{font-size:13px;color:#5b6b63;margin-bottom:18px}
+  .unit{
+    border:1px solid #e8ede9;border-radius:12px;padding:16px;margin-bottom:12px;
+    background:#fbfdfb;
+  }
+  .unit .top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
+  .unit .name{font-size:15px;font-weight:700;color:var(--forest)}
+  .chip{
+    font-size:11px;font-weight:600;padding:4px 9px;border-radius:20px;white-space:nowrap;
+  }
+  .chip.hi{background:var(--lightsage);color:var(--forest)}
+  .chip.med{background:#fbf0d6;color:#8a6a1e}
+  .unit .note{font-size:13px;color:#4a574f}
+  .unit .ex{font-size:12px;color:var(--pine);font-weight:600;margin-top:7px}
+  .cta-box{
+    margin-top:6px;background:var(--forest);border-radius:var(--radius);
+    padding:22px;text-align:center;
+  }
+  .cta-box h3{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px}
+  .cta-box p{color:var(--lightsage);font-size:13px;margin-bottom:16px}
+  .cta-box a{
+    display:inline-block;background:var(--gold);color:#2a2100;text-decoration:none;
+    font-weight:700;font-size:15px;padding:13px 26px;border-radius:12px;transition:all .15s;
+  }
+  .cta-box a:hover{filter:brightness(1.06)}
+  .restart{background:none;border:none;color:var(--pine);font-size:13px;font-weight:600;cursor:pointer;margin-top:14px;font-family:inherit}
+  .disc{font-size:11px;color:#8a968f;margin-top:16px;text-align:center;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#74C69D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l6-12 4 7 3-5 5 10z"/></svg>
+    </div>
+    <h1>Scout<span>IQ</span></h1>
+  </div>
+  <p class="sub">Colorado OTC Elk Unit Matcher · 2nd &amp; 3rd Rifle 2026. Tags go on sale Aug 4.</p>
+
+  <div class="card" id="quiz">
+    <div class="q">
+      <div class="num">1 · Weapon &amp; season</div>
+      <h3>How are you hunting?</h3>
+      <div class="opts" data-q="weapon">
+        <button class="opt" data-v="rifle2">2nd rifle (Oct/Nov)</button>
+        <button class="opt" data-v="rifle3">3rd rifle (Nov)</button>
+      </div>
+    </div>
+    <div class="q">
+      <div class="num">2 · Effort</div>
+      <h3>How hard do you want to work?</h3>
+      <div class="opts" data-q="effort">
+        <button class="opt" data-v="hard">Deep &amp; steep, miles from the road</button>
+        <button class="opt" data-v="mid">A solid day hike in</button>
+        <button class="opt" data-v="easy">Closer to access, road-based</button>
+      </div>
+    </div>
+    <div class="q">
+      <div class="num">3 · Crowds</div>
+      <h3>Pressure tolerance?</h3>
+      <div class="opts" data-q="pressure">
+        <button class="opt" data-v="low">I want it quiet</button>
+        <button class="opt" data-v="ok">Some company is fine</button>
+      </div>
+    </div>
+    <div class="q">
+      <div class="num">4 · Region</div>
+      <h3>Where do you want to be?</h3>
+      <div class="opts" data-q="region">
+        <button class="opt" data-v="nw">Northwest CO</button>
+        <button class="opt" data-v="sw">Southwest / San Juans</button>
+        <button class="opt" data-v="central">Central mountains</button>
+        <button class="opt" data-v="any">No preference</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="cta-btn" id="go" disabled>Answer all 4 to see your units</button>
+
+  <div class="card results" id="results">
+    <div class="rhead">Your OTC starting points</div>
+    <div class="rsub" id="rsub"></div>
+    <div id="unitList"></div>
+    <div class="cta-box">
+      <h3>Picked a unit? Now find where the elk actually move.</h3>
+      <p>ScoutIQ forecasts daily elk movement inside your unit, with a confidence score on every call.</p>
+      <a href="https://huntingscoutiq.com/" id="ctaLink">Get your unit's forecast before Aug 4 →</a>
+    </div>
+    <div style="text-align:center"><button class="restart" id="restart">↺ Start over</button></div>
+    <p class="disc">Directional suggestions to speed up your research, not a guarantee. Always confirm a unit's current OTC status and boundaries on the official CPW 2026 Big Game brochure before you buy. Units 54, 55, and 551 moved to limited draw for 2026.</p>
+  </div>
+</div>
+
+<script>
+const answers = {weapon:null, effort:null, pressure:null, region:null};
+
+document.querySelectorAll('.opts').forEach(group=>{
+  const key = group.dataset.q;
+  group.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      group.querySelectorAll('.opt').forEach(b=>b.classList.remove('sel'));
+      btn.classList.add('sel');
+      answers[key]=btn.dataset.v;
+      checkReady();
+    });
+  });
+});
+
+function checkReady(){
+  const done = Object.values(answers).every(v=>v!==null);
+  const go = document.getElementById('go');
+  go.disabled = !done;
+  go.textContent = done ? 'Show my units →' : 'Answer all 4 to see your units';
+}
+
+// Region pools of well-known OTC 2nd/3rd rifle areas (directional; verify on CPW brochure)
+const pools = {
+  nw: [
+    {name:'White River area', ex:'e.g. units 22, 32, 33', terrain:'Big country, timber and oak brush. Holds elk under pressure. Iconic and busy near the roads, quieter the deeper you go.'},
+    {name:'Northwest high desert edges', ex:'e.g. units 12, 13, 23, 24', terrain:'Sage, pinyon-juniper and pockets of dark timber. Access varies, so vet public land before you commit.'}
+  ],
+  sw: [
+    {name:'San Juan high country', ex:'e.g. units 74, 75, 751', terrain:'Steep, high, remote. Elk security is excellent for hunters willing to climb. Weather-dependent in 3rd rifle.'},
+    {name:'Southern San Juans', ex:'e.g. units 76, 77, 78', terrain:'Mixed timber and parks. Good OTC option with room to get away from roads.'}
+  ],
+  central: [
+    {name:'Central mountain timber', ex:'e.g. units 25, 26, 35, 36', terrain:'Dark timber and benches near the Front Range. More pressure due to population, so go deep for quiet.'},
+    {name:'Gunnison-country fringe', ex:'e.g. units 66, 67 (NOT 54/55/551)', terrain:'Solid elk numbers. Note the core Gunnison units moved to draw for 2026, so aim at the OTC fringe.'}
+  ]
+};
+
+function pick(){
+  let regions = answers.region==='any' ? ['nw','sw','central'] : [answers.region];
+  let out = [];
+  regions.forEach(r=>{ pools[r].forEach(u=>out.push({...u, region:r})); });
+
+  // Confidence weighting from effort + pressure
+  const wantsQuiet = answers.pressure==='low';
+  const hardEffort = answers.effort==='hard';
+  out = out.map(u=>{
+    let conf = 'Good fit';
+    let cls = 'med';
+    if((wantsQuiet && hardEffort) || answers.region!=='any'){ conf='Strong fit'; cls='hi'; }
+    if(wantsQuiet && answers.effort==='easy'){ conf='Fair fit'; cls='med'; } // quiet + road-based is a stretch
+    return {...u, conf, cls};
+  });
+  return out.slice(0, answers.region==='any'?3:2);
+}
+
+document.getElementById('go').addEventListener('click',()=>{
+  const list = pick();
+  const el = document.getElementById('unitList');
+  el.innerHTML='';
+  list.forEach(u=>{
+    el.insertAdjacentHTML('beforeend',`
+      <div class="unit">
+        <div class="top"><span class="name">${u.name}</span><span class="chip ${u.cls}">${u.conf}</span></div>
+        <div class="note">${u.terrain}</div>
+        <div class="ex">${u.ex}</div>
+      </div>`);
+  });
+  const effortTxt = {hard:'deep-and-steep',mid:'day-hike',easy:'road-based'}[answers.effort];
+  document.getElementById('rsub').textContent =
+    `Based on a ${effortTxt} ${answers.weapon==='rifle2'?'2nd':'3rd'} rifle hunt, ${answers.pressure==='low'?'prioritizing quiet country':'with some pressure OK'}.`;
+  document.getElementById('results').classList.add('show');
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+document.getElementById('restart').addEventListener('click',()=>{
+  Object.keys(answers).forEach(k=>answers[k]=null);
+  document.querySelectorAll('.opt').forEach(b=>b.classList.remove('sel'));
+  document.getElementById('results').classList.remove('show');
+  checkReady();
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>
