@@ -3,98 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScoutIQ — Colorado OTC Elk Unit Matcher</title>
+<title>Colorado OTC Elk Unit Matcher (2026) | ScoutIQ</title>
+<meta name="description" content="Answer 4 questions and get Colorado OTC 2nd &amp; 3rd rifle elk units matched to your effort, pressure tolerance, and region. Free planning tool from ScoutIQ.">
+<link rel="canonical" href="https://huntingscoutiq.com/unit-matcher.html">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Colorado OTC Elk Unit Matcher (2026) | ScoutIQ">
+<meta property="og:description" content="Answer 4 questions and get Colorado OTC 2nd &amp; 3rd rifle elk units matched to your effort, pressure tolerance, and region. Free planning tool from ScoutIQ.">
+<meta property="og:url" content="https://huntingscoutiq.com/unit-matcher.html">
+<meta property="og:image" content="https://huntingscoutiq.com/og-image.jpg">
+<meta property="og:site_name" content="ScoutIQ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Colorado OTC Elk Unit Matcher (2026) | ScoutIQ">
+<meta name="twitter:description" content="Answer 4 questions and get Colorado OTC 2nd &amp; 3rd rifle elk units matched to your effort, pressure tolerance, and region. Free planning tool from ScoutIQ.">
+<meta name="twitter:image" content="https://huntingscoutiq.com/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --forest:#1B4332; --green:#2D6A4F; --pine:#40916C; --sage:#74C69D;
-    --lightsage:#B7E4C7; --cream:#F8F7F3; --charcoal:#333333; --gold:#C89B3C;
-    --radius:16px; --shadow:0 6px 24px rgba(27,67,50,.10);
+    --bg:#0A1410;--surface:#10231B;--surface-2:#142A20;--line:rgba(183,228,199,.10);--line-2:rgba(183,228,199,.18);
+    --cream:#F8F7F3;--text:#E9EDE9;--muted:#93A89B;--faint:#6B8074;--sage:#74C69D;--lsage:#B7E4C7;--pine:#40916C;--gold:#C89B3C;
+    --radius:14px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{
     font-family:'Inter',-apple-system,system-ui,sans-serif;
-    background:var(--cream); color:var(--charcoal);
+    background:var(--bg); color:var(--text);
     -webkit-font-smoothing:antialiased; line-height:1.5;
-    padding:24px 16px;
   }
-  .wrap{max-width:620px;margin:0 auto}
+  h1,h2,h3{font-family:'Manrope',sans-serif;color:var(--cream);letter-spacing:-.01em;line-height:1.2}
+  .nav{position:sticky;top:0;z-index:50;background:rgba(10,20,16,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav .in{max-width:1080px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:18px}
+  .nav .brandlink{display:flex;align-items:center;gap:10px;margin-right:auto;text-decoration:none}
+  .nav .brandlink .m{width:32px;height:32px;border-radius:9px;overflow:hidden;background:#0d0d0e}
+  .nav .brandlink .m img{width:100%;height:100%;object-fit:cover;display:block}
+  .nav .brandlink .wm{font-family:'Manrope';font-weight:800;font-size:18px;color:var(--cream);letter-spacing:.04em}
+  .nav .brandlink .wm span{color:var(--sage)}
+  .nav .links{display:flex;gap:20px}
+  .nav .links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none}
+  .nav .links a:hover{color:var(--cream)}
+  .nav .navcta{background:var(--gold);color:#141005;font-weight:700;font-size:14px;border-radius:11px;padding:9px 16px;text-decoration:none}
+  @media(max-width:720px){.nav .links{display:none}}
+  .wrap{max-width:620px;margin:0 auto;padding:34px 16px 60px}
   .brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-  .logo{
-    width:34px;height:34px;border-radius:9px;
-    background:var(--forest);display:grid;place-items:center;
-  }
-  .logo svg{width:20px;height:20px}
-  .brand h1{font-size:20px;font-weight:700;color:var(--forest);letter-spacing:-.02em}
-  .brand h1 span{color:var(--pine)}
-  .sub{color:#5b6b63;font-size:14px;margin-bottom:22px}
+  .brand h1{font-size:22px;font-weight:800;color:var(--cream)}
+  .brand h1 span{color:var(--sage)}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:22px}
   .card{
-    background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
     padding:26px 24px;margin-bottom:18px;
   }
   .q{margin-bottom:22px}
   .q:last-child{margin-bottom:0}
-  .q .num{font-size:12px;font-weight:600;color:var(--pine);text-transform:uppercase;letter-spacing:.06em}
-  .q h3{font-size:16px;font-weight:600;color:var(--forest);margin:4px 0 12px}
+  .q .num{font-size:12px;font-weight:700;color:var(--sage);text-transform:uppercase;letter-spacing:.06em}
+  .q h3{font-size:16px;font-weight:700;color:var(--cream);margin:4px 0 12px}
   .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   @media(max-width:460px){.opts{grid-template-columns:1fr}}
   .opt{
-    border:1.5px solid #e3e8e4;background:#fff;border-radius:12px;
-    padding:12px 14px;font-size:14px;font-weight:500;color:var(--charcoal);
-    cursor:pointer;transition:all .15s;text-align:left;
+    border:1.5px solid var(--line-2);background:var(--surface-2);border-radius:12px;
+    padding:12px 14px;font-size:14px;font-weight:500;color:var(--text);
+    cursor:pointer;transition:all .15s;text-align:left;font-family:inherit;
   }
-  .opt:hover{border-color:var(--sage);background:#fbfdfb}
-  .opt.sel{border-color:var(--pine);background:var(--lightsage);color:var(--forest);font-weight:600}
+  .opt:hover{border-color:var(--sage);background:#173026}
+  .opt.sel{border-color:var(--sage);background:rgba(116,198,157,.14);color:var(--lsage);font-weight:600}
   .cta-btn{
     width:100%;border:none;border-radius:12px;padding:15px;
-    background:var(--forest);color:#fff;font-family:inherit;font-size:16px;font-weight:600;
+    background:var(--gold);color:#141005;font-family:inherit;font-size:16px;font-weight:700;
     cursor:pointer;transition:all .15s;
   }
-  .cta-btn:hover{background:var(--green)}
-  .cta-btn:disabled{background:#c7d1cb;cursor:not-allowed}
+  .cta-btn:hover{filter:brightness(1.06)}
+  .cta-btn:disabled{background:#24352c;color:var(--faint);cursor:not-allowed;filter:none}
   .results{display:none}
   .results.show{display:block;animation:fade .3s ease}
   @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  .rhead{font-size:18px;font-weight:700;color:var(--forest);margin-bottom:4px}
-  .rsub{font-size:13px;color:#5b6b63;margin-bottom:18px}
+  .rhead{font-size:18px;font-weight:800;color:var(--cream);margin-bottom:4px}
+  .rsub{font-size:13px;color:var(--muted);margin-bottom:18px}
   .unit{
-    border:1px solid #e8ede9;border-radius:12px;padding:16px;margin-bottom:12px;
-    background:#fbfdfb;
+    border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px;
+    background:var(--surface-2);
   }
   .unit .top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
-  .unit .name{font-size:15px;font-weight:700;color:var(--forest)}
+  .unit .name{font-size:15px;font-weight:700;color:var(--cream)}
   .chip{
-    font-size:11px;font-weight:600;padding:4px 9px;border-radius:20px;white-space:nowrap;
+    font-size:11px;font-weight:700;padding:4px 9px;border-radius:20px;white-space:nowrap;
   }
-  .chip.hi{background:var(--lightsage);color:var(--forest)}
-  .chip.med{background:#fbf0d6;color:#8a6a1e}
-  .unit .note{font-size:13px;color:#4a574f}
-  .unit .ex{font-size:12px;color:var(--pine);font-weight:600;margin-top:7px}
+  .chip.hi{background:rgba(116,198,157,.14);color:var(--lsage);border:1px solid rgba(116,198,157,.22)}
+  .chip.med{background:rgba(200,155,60,.12);color:#E5C77E;border:1px solid rgba(200,155,60,.28)}
+  .unit .note{font-size:13px;color:var(--text)}
+  .unit .ex{font-size:12px;color:var(--sage);font-weight:600;margin-top:7px}
   .cta-box{
-    margin-top:6px;background:var(--forest);border-radius:var(--radius);
+    margin-top:6px;background:linear-gradient(160deg,var(--surface-2),var(--surface));
+    border:1px solid var(--line-2);border-radius:var(--radius);
     padding:22px;text-align:center;
   }
-  .cta-box h3{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px}
-  .cta-box p{color:var(--lightsage);font-size:13px;margin-bottom:16px}
+  .cta-box h3{color:var(--cream);font-size:17px;font-weight:800;margin-bottom:6px}
+  .cta-box p{color:var(--muted);font-size:13px;margin-bottom:16px}
   .cta-box a{
-    display:inline-block;background:var(--gold);color:#2a2100;text-decoration:none;
+    display:inline-block;background:var(--gold);color:#141005;text-decoration:none;
     font-weight:700;font-size:15px;padding:13px 26px;border-radius:12px;transition:all .15s;
   }
   .cta-box a:hover{filter:brightness(1.06)}
-  .restart{background:none;border:none;color:var(--pine);font-size:13px;font-weight:600;cursor:pointer;margin-top:14px;font-family:inherit}
-  .disc{font-size:11px;color:#8a968f;margin-top:16px;text-align:center;line-height:1.5}
+  .restart{background:none;border:none;color:var(--sage);font-size:13px;font-weight:600;cursor:pointer;margin-top:14px;font-family:inherit}
+  .disc{font-size:11px;color:var(--faint);margin-top:16px;text-align:center;line-height:1.5}
 </style>
 </head>
 <body>
+<nav class="nav"><div class="in">
+<a class="brandlink" href="https://huntingscoutiq.com/"><span class="m"><img src="https://huntingscoutiq.com/logo.jpg" alt="ScoutIQ"></span><span class="wm">SCOUT<span>IQ</span></span></a>
+<div class="links"><a href="https://huntingscoutiq.com/colorado-otc-elk-units.html">Units</a><a href="https://huntingscoutiq.com/">Home</a></div>
+<a class="navcta" href="https://app.huntingscoutiq.com">Get Access</a>
+</div></nav>
 <div class="wrap">
   <div class="brand">
-    <div class="logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#74C69D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l6-12 4 7 3-5 5 10z"/></svg>
-    </div>
-    <h1>Scout<span>IQ</span></h1>
+    <h1>Colorado OTC Elk Unit Matcher</h1>
   </div>
-  <p class="sub">Colorado OTC Elk Unit Matcher · 2nd &amp; 3rd Rifle 2026. Tags go on sale Aug 4.</p>
+  <p class="sub">2nd &amp; 3rd Rifle 2026. Tags go on sale Aug 4.</p>
 
   <div class="card" id="quiz">
     <div class="q">
@@ -143,7 +167,7 @@
     <div class="cta-box">
       <h3>Picked a unit? Now find where the elk actually move.</h3>
       <p>ScoutIQ forecasts daily elk movement inside your unit, with a confidence score on every call.</p>
-      <a href="https://huntingscoutiq.com/" id="ctaLink">Get your unit's forecast before Aug 4 →</a>
+      <a href="https://app.huntingscoutiq.com" id="ctaLink">Get your unit's forecast before Aug 4 →</a>
     </div>
     <div style="text-align:center"><button class="restart" id="restart">↺ Start over</button></div>
     <p class="disc">Directional suggestions to speed up your research, not a guarantee. Always confirm a unit's current OTC status and boundaries on the official CPW 2026 Big Game brochure before you buy. Units 54, 55, and 551 moved to limited draw for 2026.</p>
