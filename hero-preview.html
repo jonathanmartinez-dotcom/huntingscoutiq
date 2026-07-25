@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScoutIQ hero preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A1410;--surface:#10231B;--cream:#F8F7F3;--text:#E9EDE9;--muted:#93A89B;--faint:#6B8074;--sage:#74C69D;--lsage:#B7E4C7;--gold:#C89B3C}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:'Manrope',sans-serif}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,20,16,.7);backdrop-filter:blur(12px);border-bottom:1px solid rgba(183,228,199,.10)}
+.nav .in{max-width:1180px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:18px}
+.nav .bwm{font-family:'Manrope';font-weight:800;font-size:18px;letter-spacing:.04em;margin-right:auto;color:var(--cream)}
+.nav .bwm span{color:var(--sage)}
+.nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500}
+.nav .cta{background:var(--gold);color:#141005;font-weight:700;border-radius:11px;padding:9px 16px}
+@media(max-width:720px){.nav .lk{display:none}}
+
+/* ---- HERO ---- */
+.heronat{position:relative;overflow:hidden;min-height:clamp(540px,70vh,680px);background:radial-gradient(120% 90% at 72% 12%,#16281f 0%,#0c1712 45%,#0a1410 100%);isolation:isolate}
+.scene{position:absolute;inset:0;z-index:0}
+/* distant horizon haze + ridges */
+.sky{position:absolute;left:0;right:0;top:0;height:52%;background:linear-gradient(180deg,#0d1a15 0%,#16241d 55%,rgba(28,42,35,.35) 100%)}
+.ridge{position:absolute;left:0;right:0;top:0;width:100%;height:52%;opacity:.6}
+/* tilted terrain plane */
+.plane{position:absolute;left:6%;right:-16%;top:30%;bottom:-30%;transform:perspective(720px) rotateX(63deg);transform-origin:50% 0;filter:saturate(1.05)}
+.plane .grid{position:absolute;inset:0}
+.heat{position:absolute;left:20%;top:26%;width:62%;height:52%;
+  background:radial-gradient(ellipse 46% 52% at 50% 50%,rgba(198,58,42,.92) 0%,rgba(205,96,45,.72) 30%,rgba(206,150,58,.5) 52%,rgba(150,178,86,.32) 70%,rgba(116,198,157,.14) 84%,transparent 92%);
+  filter:blur(7px);mix-blend-mode:screen}
+.vig{position:absolute;inset:0;background:radial-gradient(120% 120% at 60% 45%,transparent 55%,rgba(6,12,9,.55) 100%)}
+/* left scrim for text */
+.scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(7,14,11,.95) 0%,rgba(7,14,11,.74) 30%,rgba(7,14,11,.34) 56%,rgba(7,14,11,.05) 100%),linear-gradient(0deg,rgba(7,14,11,.5) 0%,transparent 42%)}
+
+/* labels */
+.lab{position:absolute;z-index:2;font-size:12px;font-weight:600;color:#eaf1ea;text-shadow:0 1px 6px rgba(0,0,0,.7);letter-spacing:.02em;pointer-events:none}
+.lab.dim{color:#cdd8cf;font-weight:500;opacity:.9}
+.lab .tri{color:#e8eee9;opacity:.85;margin-right:3px}
+.chip{position:absolute;z-index:2;font-size:11px;font-weight:700;color:#eef4ee;background:rgba(10,18,14,.4);border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:2px 6px;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.elev{position:absolute;z-index:2;font-size:11px;font-weight:600;color:#f2ece0;opacity:.82;text-shadow:0 1px 5px rgba(0,0,0,.7);transform:skew(-6deg)}
+
+/* glass UI cards */
+.card{position:absolute;z-index:3;background:rgba(14,24,18,.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(183,228,199,.16);border-radius:16px;box-shadow:0 12px 34px rgba(0,0,0,.4)}
+.wx{top:8%;left:45%;padding:14px 18px;min-width:150px}
+.wx .t{display:flex;align-items:center;gap:10px}
+.wx .t b{font-family:'Manrope';font-weight:800;font-size:30px;color:var(--cream);letter-spacing:-.02em}
+.wx .sun{width:22px;height:22px}
+.wx .r{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;margin-top:8px;font-variant-numeric:tabular-nums}
+.wx .r svg{width:14px;height:14px;opacity:.85}
+.wx hr{border:none;border-top:1px solid rgba(183,228,199,.12);margin:10px 0 0}
+
+.score{right:5%;bottom:8%;padding:15px 17px;width:230px}
+.score .h{font-family:'Manrope';font-weight:800;font-size:12.5px;letter-spacing:.08em;color:var(--cream);margin-bottom:10px}
+.score .bar{height:9px;border-radius:6px;background:linear-gradient(90deg,#E8E3D2,#C89B3C 52%,#C0392B)}
+.score .ends{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:7px;font-weight:600}
+.score .cap{font-size:11px;color:var(--faint);margin-top:6px}
+
+/* right toolbar */
+.tools{position:absolute;z-index:3;right:2.2%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:12px}
+.tools .rnd,.tools .pill{background:rgba(14,24,18,.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(183,228,199,.16);box-shadow:0 10px 26px rgba(0,0,0,.4)}
+.tools .rnd{width:44px;height:44px;border-radius:50%;display:grid;place-items:center}
+.tools .pill{border-radius:26px;padding:12px 0;width:52px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.tools .ti{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted);font-size:9px;font-weight:700;letter-spacing:.03em}
+.tools .ti svg{width:20px;height:20px}
+.tools .ti.on{color:var(--gold)}
+.tools svg{stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+/* content */
+.wrap{position:relative;z-index:4;max-width:1180px;margin:0 auto;padding:0 22px;min-height:inherit;display:flex;align-items:center}
+.inner{max-width:560px;padding:40px 0}
+.kick{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.heronat h1{font-weight:800;font-size:clamp(34px,5.4vw,62px);line-height:1.04;letter-spacing:-.02em;color:var(--cream);margin-bottom:20px;text-shadow:0 2px 22px rgba(0,0,0,.5)}
+.heronat h1 .a{color:var(--sage)}
+.sub{max-width:460px;color:#d6ded7;font-size:clamp(15px,1.5vw,18px);line-height:1.6;margin-bottom:28px;text-shadow:0 1px 14px rgba(0,0,0,.6)}
+.row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn{background:var(--gold);color:#141005;font-weight:700;font-size:16px;border-radius:13px;padding:14px 26px;text-decoration:none;display:inline-block}
+.free{font-size:12.5px;color:#bccabf}
+
+@media(max-width:900px){.wx{left:auto;right:6%;top:6%} }
+@media(max-width:720px){
+  .heronat{min-height:clamp(460px,80vh,600px)}
+  .plane{left:-10%;right:-20%;top:36%}
+  .scrim{background:linear-gradient(180deg,rgba(7,14,11,.72) 0%,rgba(7,14,11,.86) 55%,rgba(7,14,11,.95) 100%)}
+  .wx,.tools,.lab,.chip,.elev{display:none}
+  .score{right:5%;bottom:6%;left:5%;width:auto}
+  .inner{max-width:none}
+}
+@media(max-width:480px){.score{display:none}}
+</style></head>
+<body>
+<nav class="nav"><div class="in"><div class="bwm">SCOUT<span>IQ</span></div>
+<a class="lk" href="#">Why it works</a><a class="lk" href="#">Units</a><a class="lk" href="#">Field Journal</a><a class="lk" href="#">About</a>
+<a class="cta" href="#">Get Access</a></div></nav>
+
+<header class="heronat">
+  <div class="scene">
+    <div class="sky"></div>
+    <svg class="ridge" viewBox="0 0 1200 300" preserveAspectRatio="none">
+      <polygon points="0,210 150,150 320,190 480,120 660,175 820,110 1000,165 1200,120 1200,300 0,300" fill="#1b2c24" opacity=".7"/>
+      <polygon points="0,240 180,195 360,225 560,170 760,215 980,165 1200,205 1200,300 0,300" fill="#22362c" opacity=".7"/>
+    </svg>
+    <div class="plane">
+      <svg class="grid" viewBox="0 0 1200 860" preserveAspectRatio="none">
+        <path d="M 0 54.7 L 30 55.6 L 60 56.0 L 90 55.9 L 120 55.0 L 150 53.3 L 180 50.7 L 210 47.3 L 240 43.0 L 270 38.0 L 300 32.4 L 330 26.3 L 360 20.1 L 390 13.8 L 420 7.9 L 450 2.5 L 480 -2.1 L 510 -5.7 L 540 -8.1 L 570 -9.2 L 600 -9.0 L 630 -7.4 L 660 -4.6 L 690 -0.6 L 720 4.3 L 750 10.0 L 780 16.2 L 810 22.6 L 840 29.0 L 870 35.2 L 900 41.0 L 930 46.2 L 960 50.6 L 990 54.1 L 1020 56.8 L 1050 58.6 L 1080 59.6 L 1110 59.7 L 1140 59.2 L 1170 58.2 L 1200 56.7" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.09"/>
+<path d="M 0 107.7 L 30 109.3 L 60 110.0 L 90 109.6 L 120 108.0 L 150 105.2 L 180 101.1 L 210 95.9 L 240 89.7 L 270 82.6 L 300 75.0 L 330 67.0 L 360 59.1 L 390 51.5 L 420 44.6 L 450 38.7 L 480 34.0 L 510 30.7 L 540 29.0 L 570 28.9 L 600 30.4 L 630 33.4 L 660 37.8 L 690 43.3 L 720 49.6 L 750 56.4 L 780 63.5 L 810 70.4 L 840 76.9 L 870 82.7 L 900 87.6 L 930 91.6 L 960 94.4 L 990 96.0 L 1020 96.5 L 1050 96.1 L 1080 94.8 L 1110 92.7 L 1140 90.2 L 1170 87.5 L 1200 84.7" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.14"/>
+<path d="M 0 164.6 L 30 164.7 L 60 163.3 L 90 160.4 L 120 155.9 L 150 150.1 L 180 142.9 L 210 134.8 L 240 125.9 L 270 116.6 L 300 107.2 L 330 98.1 L 360 89.6 L 390 82.1 L 420 75.9 L 450 71.2 L 480 68.1 L 510 66.9 L 540 67.4 L 570 69.6 L 600 73.4 L 630 78.4 L 660 84.5 L 690 91.2 L 720 98.3 L 750 105.3 L 780 111.9 L 810 117.8 L 840 122.7 L 870 126.5 L 900 129.0 L 930 130.2 L 960 130.2 L 990 129.1 L 1020 127.0 L 1050 124.3 L 1080 121.1 L 1110 117.8 L 1140 114.7 L 1170 111.9 L 1200 109.8" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.09"/>
+<path d="M 0 188.6 L 30 186.5 L 60 183.6 L 90 179.9 L 120 175.6 L 150 170.7 L 180 165.3 L 210 159.6 L 240 153.8 L 270 147.9 L 300 142.1 L 330 136.7 L 360 131.9 L 390 127.7 L 420 124.3 L 450 121.8 L 480 120.3 L 510 119.8 L 540 120.4 L 570 121.9 L 600 124.3 L 630 127.3 L 660 131.0 L 690 135.0 L 720 139.2 L 750 143.4 L 780 147.4 L 810 151.1 L 840 154.4 L 870 157.2 L 900 159.4 L 930 161.1 L 960 162.3 L 990 163.0 L 1020 163.5 L 1050 163.8 L 1080 163.9 L 1110 164.1 L 1140 164.5 L 1170 165.0 L 1200 165.9" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.14"/>
+<path d="M 0 231.0 L 30 226.4 L 60 221.0 L 90 215.2 L 120 208.9 L 150 202.4 L 180 195.9 L 210 189.6 L 240 183.6 L 270 178.1 L 300 173.2 L 330 169.1 L 360 165.9 L 390 163.6 L 420 162.3 L 450 161.9 L 480 162.5 L 510 163.9 L 540 166.0 L 570 168.7 L 600 171.8 L 630 175.2 L 660 178.6 L 690 181.9 L 720 185.0 L 750 187.7 L 780 190.0 L 810 191.8 L 840 193.1 L 870 193.9 L 900 194.3 L 930 194.4 L 960 194.4 L 990 194.5 L 1020 194.6 L 1050 195.1 L 1080 196.0 L 1110 197.4 L 1140 199.3 L 1170 201.9 L 1200 205.0" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.09"/>
+<path d="M 0 260.5 L 30 253.5 L 60 246.3 L 90 239.2 L 120 232.4 L 150 226.1 L 180 220.4 L 210 215.6 L 240 211.7 L 270 208.7 L 300 206.7 L 330 205.6 L 360 205.5 L 390 206.1 L 420 207.5 L 450 209.4 L 480 211.7 L 510 214.2 L 540 216.9 L 570 219.5 L 600 221.8 L 630 223.9 L 660 225.5 L 690 226.7 L 720 227.5 L 750 227.7 L 780 227.6 L 810 227.3 L 840 226.7 L 870 226.2 L 900 225.8 L 930 225.8 L 960 226.3 L 990 227.4 L 1020 229.2 L 1050 231.9 L 1080 235.4 L 1110 239.6 L 1140 244.6 L 1170 250.1 L 1200 256.0" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.14"/>
+<path d="M 0 290.3 L 30 287.1 L 60 284.0 L 90 281.0 L 120 278.1 L 150 275.5 L 180 273.1 L 210 271.0 L 240 269.0 L 270 267.3 L 300 265.7 L 330 264.4 L 360 263.2 L 390 262.2 L 420 261.3 L 450 260.6 L 480 260.1 L 510 259.8 L 540 259.7 L 570 259.8 L 600 260.2 L 630 260.7 L 660 261.4 L 690 262.4 L 720 263.5 L 750 264.9 L 780 266.4 L 810 268.1 L 840 270.0 L 870 272.2 L 900 274.5 L 930 277.0 L 960 279.7 L 990 282.6 L 1020 285.7 L 1050 288.9 L 1080 292.1 L 1110 295.4 L 1140 298.6 L 1170 301.7 L 1200 304.6" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.09"/>
+<path d="M 0 316.9 L 30 314.3 L 60 312.2 L 90 310.7 L 120 309.8 L 150 309.5 L 180 309.5 L 210 309.9 L 240 310.5 L 270 311.2 L 300 311.9 L 330 312.4 L 360 312.6 L 390 312.6 L 420 312.3 L 450 311.6 L 480 310.6 L 510 309.4 L 540 308.1 L 570 306.6 L 600 305.2 L 630 304.0 L 660 303.0 L 690 302.3 L 720 302.1 L 750 302.5 L 780 303.4 L 810 304.9 L 840 307.1 L 870 309.9 L 900 313.3 L 930 317.3 L 960 321.7 L 990 326.5 L 1020 331.5 L 1050 336.5 L 1080 341.5 L 1110 346.2 L 1140 350.5 L 1170 354.2 L 1200 357.3" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.14"/>
+<path d="M 0 345.4 L 30 345.6 L 60 346.7 L 90 348.6 L 120 351.1 L 150 354.1 L 180 357.3 L 210 360.4 L 240 363.2 L 270 365.5 L 300 367.2 L 330 368.1 L 360 368.1 L 390 367.2 L 420 365.5 L 450 363.0 L 480 359.9 L 510 356.4 L 540 352.7 L 570 349.0 L 600 345.6 L 630 342.7 L 660 340.5 L 690 339.2 L 720 338.8 L 750 339.6 L 780 341.4 L 810 344.4 L 840 348.4 L 870 353.3 L 900 359.0 L 930 365.2 L 960 371.8 L 990 378.4 L 1020 384.9 L 1050 390.9 L 1080 396.3 L 1110 400.8 L 1140 404.2 L 1170 406.5 L 1200 407.5" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.09"/>
+<path d="M 0 406.7 L 30 407.6 L 60 408.6 L 90 409.6 L 120 410.6 L 150 411.3 L 180 411.6 L 210 411.6 L 240 411.0 L 270 409.9 L 300 408.3 L 330 406.2 L 360 403.6 L 390 400.8 L 420 397.7 L 450 394.5 L 480 391.5 L 510 388.7 L 540 386.4 L 570 384.6 L 600 383.4 L 630 383.0 L 660 383.3 L 690 384.4 L 720 386.2 L 750 388.8 L 780 391.9 L 810 395.5 L 840 399.5 L 870 403.6 L 900 407.8 L 930 412.0 L 960 415.8 L 990 419.4 L 1020 422.4 L 1050 424.9 L 1080 426.8 L 1110 428.0 L 1140 428.6 L 1170 428.5 L 1200 427.8" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.14"/>
+<path d="M 0 451.1 L 30 454.4 L 60 457.5 L 90 460.4 L 120 462.7 L 150 464.4 L 180 465.2 L 210 465.1 L 240 464.0 L 270 462.0 L 300 459.1 L 330 455.4 L 360 451.1 L 390 446.4 L 420 441.5 L 450 436.7 L 480 432.1 L 510 428.2 L 540 424.9 L 570 422.7 L 600 421.4 L 630 421.3 L 660 422.3 L 690 424.4 L 720 427.5 L 750 431.5 L 780 436.1 L 810 441.2 L 840 446.4 L 870 451.7 L 900 456.6 L 930 461.1 L 960 465.0 L 990 468.0 L 1020 470.1 L 1050 471.3 L 1080 471.4 L 1110 470.6 L 1140 468.9 L 1170 466.4 L 1200 463.3" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.09"/>
+<path d="M 0 507.4 L 30 512.0 L 60 515.9 L 90 518.7 L 120 520.3 L 150 520.7 L 180 519.7 L 210 517.3 L 240 513.7 L 270 509.0 L 300 503.3 L 330 497.0 L 360 490.3 L 390 483.6 L 420 477.1 L 450 471.3 L 480 466.3 L 510 462.5 L 540 459.9 L 570 458.8 L 600 459.1 L 630 460.9 L 660 463.9 L 690 468.1 L 720 473.1 L 750 478.8 L 780 484.8 L 810 490.8 L 840 496.4 L 870 501.5 L 900 505.7 L 930 508.8 L 960 510.8 L 990 511.5 L 1020 510.9 L 1050 509.1 L 1080 506.2 L 1110 502.4 L 1140 497.9 L 1170 493.0 L 1200 487.9" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.14"/>
+<path d="M 0 548.6 L 30 549.3 L 60 549.3 L 90 548.7 L 120 547.5 L 150 545.5 L 180 543.0 L 210 539.9 L 240 536.3 L 270 532.5 L 300 528.4 L 330 524.3 L 360 520.4 L 390 516.8 L 420 513.7 L 450 511.1 L 480 509.3 L 510 508.2 L 540 507.9 L 570 508.4 L 600 509.7 L 630 511.6 L 660 514.1 L 690 517.0 L 720 520.2 L 750 523.5 L 780 526.7 L 810 529.7 L 840 532.3 L 870 534.5 L 900 536.2 L 930 537.2 L 960 537.7 L 990 537.6 L 1020 537.0 L 1050 536.0 L 1080 534.7 L 1110 533.1 L 1140 531.5 L 1170 530.0 L 1200 528.6" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.09"/>
+<path d="M 0 600.6 L 30 599.9 L 60 598.1 L 90 595.5 L 120 592.0 L 150 587.7 L 180 582.9 L 210 577.8 L 240 572.4 L 270 567.1 L 300 562.0 L 330 557.4 L 360 553.4 L 390 550.2 L 420 547.8 L 450 546.5 L 480 546.1 L 510 546.7 L 540 548.2 L 570 550.5 L 600 553.4 L 630 556.8 L 660 560.4 L 690 564.0 L 720 567.5 L 750 570.6 L 780 573.2 L 810 575.2 L 840 576.4 L 870 576.8 L 900 576.5 L 930 575.5 L 960 573.8 L 990 571.7 L 1020 569.2 L 1050 566.7 L 1080 564.2 L 1110 561.9 L 1140 560.1 L 1170 558.8 L 1200 558.2" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.14"/>
+<path d="M 0 645.3 L 30 641.3 L 60 636.4 L 90 630.6 L 120 624.3 L 150 617.7 L 180 611.1 L 210 604.8 L 240 598.9 L 270 593.7 L 300 589.4 L 330 586.2 L 360 584.1 L 390 583.2 L 420 583.4 L 450 584.8 L 480 587.0 L 510 590.1 L 540 593.8 L 570 597.8 L 600 601.9 L 630 605.9 L 660 609.5 L 690 612.5 L 720 614.8 L 750 616.2 L 780 616.6 L 810 616.2 L 840 614.8 L 870 612.7 L 900 609.9 L 930 606.7 L 960 603.3 L 990 600.0 L 1020 596.9 L 1050 594.4 L 1080 592.6 L 1110 591.7 L 1140 591.8 L 1170 593.0 L 1200 595.3" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.09"/>
+<path d="M 0 664.2 L 30 661.5 L 60 658.5 L 90 655.5 L 120 652.5 L 150 649.6 L 180 646.9 L 210 644.5 L 240 642.5 L 270 640.9 L 300 639.7 L 330 639.1 L 360 638.8 L 390 639.0 L 420 639.6 L 450 640.5 L 480 641.7 L 510 643.0 L 540 644.5 L 570 645.9 L 600 647.3 L 630 648.5 L 660 649.5 L 690 650.2 L 720 650.7 L 750 650.8 L 780 650.7 L 810 650.4 L 840 649.9 L 870 649.2 L 900 648.5 L 930 647.9 L 960 647.4 L 990 647.2 L 1020 647.2 L 1050 647.5 L 1080 648.3 L 1110 649.4 L 1140 650.9 L 1170 652.8 L 1200 655.0" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.14"/>
+<path d="M 0 695.0 L 30 690.7 L 60 686.7 L 90 683.0 L 120 680.0 L 150 677.5 L 180 675.9 L 210 674.9 L 240 674.8 L 270 675.3 L 300 676.5 L 330 678.2 L 360 680.4 L 390 682.8 L 420 685.3 L 450 687.8 L 480 690.1 L 510 692.1 L 540 693.7 L 570 694.9 L 600 695.4 L 630 695.5 L 660 695.0 L 690 694.0 L 720 692.6 L 750 690.9 L 780 689.0 L 810 687.1 L 840 685.3 L 870 683.8 L 900 682.8 L 930 682.2 L 960 682.3 L 990 683.0 L 1020 684.5 L 1050 686.6 L 1080 689.4 L 1110 692.7 L 1140 696.4 L 1170 700.4 L 1200 704.5" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.09"/>
+<path d="M 0 717.2 L 30 713.2 L 60 710.2 L 90 708.3 L 120 707.5 L 150 707.8 L 180 709.2 L 210 711.6 L 240 714.8 L 270 718.5 L 300 722.7 L 330 727.0 L 360 731.2 L 390 735.1 L 420 738.5 L 450 741.2 L 480 743.1 L 510 744.1 L 540 744.2 L 570 743.4 L 600 741.8 L 630 739.4 L 660 736.6 L 690 733.5 L 720 730.2 L 750 727.0 L 780 724.2 L 810 721.9 L 840 720.3 L 870 719.6 L 900 719.9 L 930 721.2 L 960 723.5 L 990 726.7 L 1020 730.8 L 1050 735.5 L 1080 740.7 L 1110 746.2 L 1140 751.6 L 1170 756.8 L 1200 761.5" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.14"/>
+<path d="M 0 766.2 L 30 765.8 L 60 765.9 L 90 766.5 L 120 767.5 L 150 768.8 L 180 770.4 L 210 772.2 L 240 774.0 L 270 775.8 L 300 777.5 L 330 779.0 L 360 780.2 L 390 781.0 L 420 781.4 L 450 781.4 L 480 781.1 L 510 780.3 L 540 779.3 L 570 778.1 L 600 776.7 L 630 775.2 L 660 773.8 L 690 772.5 L 720 771.5 L 750 770.7 L 780 770.4 L 810 770.4 L 840 770.9 L 870 771.9 L 900 773.2 L 930 774.9 L 960 776.9 L 990 779.1 L 1020 781.4 L 1050 783.8 L 1080 786.0 L 1110 788.1 L 1140 789.9 L 1170 791.3 L 1200 792.2" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.09"/>
+<path d="M 0 799.1 L 30 801.0 L 60 803.6 L 90 806.8 L 120 810.4 L 150 814.1 L 180 818.0 L 210 821.6 L 240 825.0 L 270 827.8 L 300 830.0 L 330 831.6 L 360 832.3 L 390 832.3 L 420 831.5 L 450 830.1 L 480 828.0 L 510 825.5 L 540 822.8 L 570 819.9 L 600 817.1 L 630 814.6 L 660 812.4 L 690 810.8 L 720 809.8 L 750 809.6 L 780 810.1 L 810 811.3 L 840 813.2 L 870 815.7 L 900 818.7 L 930 821.9 L 960 825.4 L 990 828.8 L 1020 831.9 L 1050 834.7 L 1080 837.0 L 1110 838.6 L 1140 839.4 L 1170 839.4 L 1200 838.5" fill="none" stroke="#74C69D" stroke-width="1.15" stroke-opacity="0.14"/>
+        <ellipse cx="555" cy="430" rx="170" ry="75" fill="none" stroke="#D9A441" stroke-width="1.1" stroke-opacity="0.12"/>
+<ellipse cx="555" cy="430" rx="138" ry="61" fill="none" stroke="#D9A441" stroke-width="1.1" stroke-opacity="0.15"/>
+<ellipse cx="555" cy="430" rx="108" ry="48" fill="none" stroke="#D9A441" stroke-width="1.1" stroke-opacity="0.18"/>
+<ellipse cx="555" cy="430" rx="80" ry="35" fill="none" stroke="#D9A441" stroke-width="1.1" stroke-opacity="0.20"/>
+<ellipse cx="555" cy="430" rx="55" ry="24" fill="none" stroke="#D9A441" stroke-width="1.1" stroke-opacity="0.23"/>
+<ellipse cx="555" cy="430" rx="33" ry="15" fill="none" stroke="#D9A441" stroke-width="1.1" stroke-opacity="0.26"/>
+<ellipse cx="555" cy="430" rx="16" ry="7" fill="none" stroke="#D9A441" stroke-width="1.1" stroke-opacity="0.29"/>
+      </svg>
+      <div class="heat"></div>
+    </div>
+    <div class="vig"></div>
+  </div>
+  <div class="scrim"></div>
+
+  <!-- map labels -->
+  <div class="lab dim" style="top:16%;left:52%"><span class="tri">&#9650;</span>Bushnell Peak</div>
+  <div class="lab dim" style="top:24%;left:66%"><span class="tri">&#9650;</span>Cronin Peak</div>
+  <div class="lab" style="top:44%;left:44%">Continental Divide</div>
+  <div class="lab" style="top:58%;left:70%"><span class="tri">&#9650;</span>Gold Hill</div>
+  <div class="chip" style="top:29%;left:70%">561</div>
+  <div class="chip" style="top:40%;left:46%">56</div>
+  <div class="chip" style="top:66%;left:57%">55</div>
+  <div class="elev" style="top:52%;left:40%">11,975'</div>
+  <div class="elev" style="top:64%;left:63%">11,319'</div>
+
+  <!-- weather card -->
+  <div class="card wx">
+    <div class="t">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="#C89B3C" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+      <b>52&deg;</b>
+    </div>
+    <hr>
+    <div class="r"><svg viewBox="0 0 24 24" stroke="#93A89B" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M3 9h11a3 3 0 100-6 3 3 0 00-2.6 1.5M3 15h15a3 3 0 110 6 3 3 0 01-2.6-1.5"/></svg> W 3&nbsp;mph</div>
+    <div class="r"><svg viewBox="0 0 24 24" stroke="#93A89B" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M6 11l6-6 6 6"/></svg> 10,762&nbsp;ft</div>
+  </div>
+
+  <!-- score card -->
+  <div class="card score">
+    <div class="h">SCOUTIQ SCORE</div>
+    <div class="bar"></div>
+    <div class="ends"><span>Lower</span><span>Prime</span></div>
+    <div class="cap">Elk potential across this view</div>
+  </div>
+
+  <!-- toolbar -->
+  <div class="tools">
+    <div class="rnd" style="color:#cfd8d0"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></div>
+    <div class="pill">
+      <div class="ti"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="3.4"/></svg></div>
+      <div class="ti"><svg viewBox="0 0 24 24"><path d="M3 18l6-9 4 6 3-4 5 7z"/></svg>Hybrid</div>
+      <div class="ti on"><svg viewBox="0 0 24 24" stroke="#C89B3C"><path d="M4 7l8-4 8 4-8 4-8-4zM4 12l8 4 8-4M4 17l8 4 8-4"/></svg>3D</div>
+      <div class="ti"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5"/></svg></div>
+      <div class="ti"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+    </div>
+  </div>
+
+  <div class="wrap"><div class="inner">
+    <div class="kick">Free private beta &middot; Colorado elk</div>
+    <h1>Better data.<br>Better scouting.<br><span class="a">Better hunts.</span></h1>
+    <p class="sub">Predictive elk scouting for Colorado. A daily movement forecast for your unit, so you know where to start before you leave the truck.</p>
+    <div class="row"><a class="btn" href="#">Get Access</a><span class="free">Free during the beta. No credit card.</span></div>
+  </div></div>
+</header>
+<section style="height:200px"></section>
+</body></html>
