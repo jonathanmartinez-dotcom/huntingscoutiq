@@ -150,20 +150,49 @@ footer .cp{width:100%;font-size:12px;color:var(--faint);margin-top:8px}
 .hero-shot .phone.big{width:238px}
 .hero-shot .phone.big .scr{border-width:6px;border-radius:30px}
 @media(max-width:820px){.hero{text-align:center;padding-top:34px}.hero-grid{grid-template-columns:1fr;gap:28px}.hero-copy .kick,.hero-copy h1,.hero-copy .sub{text-align:center}.hero-copy .sub{margin:0 auto 20px}.hero-copy .scorebar{margin:0 auto 20px}.hero-cta{justify-content:center}.hero-shot{order:2}}
-/* Full-bleed image hero */
-.herobg{position:relative;isolation:isolate;min-height:clamp(500px,66vh,650px);display:flex;align-items:center;background:#0A1410 url("hero-map.jpg") 50% 58%/cover no-repeat;overflow:hidden;border-bottom:1px solid var(--line)}
-.herobg::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(100deg,rgba(7,14,11,.96) 0%,rgba(7,14,11,.80) 30%,rgba(7,14,11,.42) 56%,rgba(7,14,11,.08) 100%),linear-gradient(0deg,rgba(7,14,11,.60) 0%,rgba(7,14,11,0) 42%)}
-.herobg .wrap{position:relative;z-index:1;width:100%}
-.herobg .inner{max-width:600px;padding:44px 0}
-.herobg .kick{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-.herobg h1{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(34px,5.4vw,62px);line-height:1.04;letter-spacing:-.02em;color:var(--cream);margin:0 0 20px;text-shadow:0 2px 22px rgba(0,0,0,.5)}
-.herobg h1 .a{color:var(--sage)}
-.herobg .sub{max-width:470px;color:#d6ded7;font-size:clamp(15px,1.5vw,18px);line-height:1.6;margin:0 0 28px;text-shadow:0 1px 14px rgba(0,0,0,.6)}
-.herobg .hero-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.herobg .hero-cta .freeline{font-size:12.5px;color:#bccabf}
-@media(max-width:820px){
-  .herobg{min-height:clamp(440px,74vh,560px);background-position:62% 55%}
-  .herobg::before{background:linear-gradient(180deg,rgba(7,14,11,.74) 0%,rgba(7,14,11,.86) 55%,rgba(7,14,11,.95) 100%)}
-  .herobg .inner{max-width:none;padding:36px 0}
+/* Native terrain-image hero */
+.heronat{position:relative;overflow:hidden;min-height:clamp(540px,72vh,700px);background:#0A1410;isolation:isolate;border-bottom:1px solid var(--line)}
+.heronat .terrain{position:absolute;inset:0;z-index:0;overflow:hidden}
+.heronat .terrain img{position:absolute;top:-5%;left:-5%;width:110%;height:110%;object-fit:cover;object-position:50% 72%;filter:brightness(1.06) saturate(1.05);animation:heidrift 30s ease-in-out infinite alternate;will-change:transform}
+@keyframes heidrift{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.10) translate(-2.4%,-1.6%)}}
+@media(prefers-reduced-motion:reduce){.heronat .terrain img{animation:none;transform:scale(1.04)}}
+.heronat .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(7,14,11,.95) 0%,rgba(7,14,11,.72) 28%,rgba(7,14,11,.30) 54%,rgba(7,14,11,.02) 100%),linear-gradient(0deg,rgba(7,14,11,.55) 0%,rgba(7,14,11,0) 34%)}
+.heronat .gcard{position:absolute;z-index:3;background:rgba(12,22,17,.62);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:1px solid rgba(183,228,199,.16);border-radius:16px;box-shadow:0 14px 36px rgba(0,0,0,.45)}
+.heronat .wx{top:8%;left:46%;padding:14px 18px;min-width:158px}
+.heronat .wx .t{display:flex;align-items:center;gap:10px}
+.heronat .wx .t b{font-family:'Manrope';font-weight:800;font-size:30px;color:var(--cream);letter-spacing:-.02em}
+.heronat .wx .sun{width:22px;height:22px}
+.heronat .wx .r{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;margin-top:8px;font-variant-numeric:tabular-nums}
+.heronat .wx .r svg{width:14px;height:14px;opacity:.85}
+.heronat .wx hr{border:none;border-top:1px solid rgba(183,228,199,.12);margin:10px 0 0}
+.heronat .score{right:5%;bottom:9%;padding:15px 17px;width:236px}
+.heronat .score .sh{font-family:'Manrope';font-weight:800;font-size:12.5px;letter-spacing:.08em;color:var(--cream);margin-bottom:10px}
+.heronat .score .sbar{height:9px;border-radius:6px;background:linear-gradient(90deg,#E8E3D2,#C89B3C 52%,#C0392B)}
+.heronat .score .ends{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:7px;font-weight:600}
+.heronat .score .cap{font-size:11px;color:var(--faint);margin-top:6px}
+.heronat .tools{position:absolute;z-index:3;right:2.2%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:12px}
+.heronat .tools .rnd,.heronat .tools .pill{background:rgba(12,22,17,.62);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);border:1px solid rgba(183,228,199,.16);box-shadow:0 10px 26px rgba(0,0,0,.45)}
+.heronat .tools .rnd{width:44px;height:44px;border-radius:50%;display:grid;place-items:center}
+.heronat .tools .pill{border-radius:26px;padding:12px 0;width:52px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.heronat .tools .ti{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted);font-size:9px;font-weight:700;letter-spacing:.03em}
+.heronat .tools .ti svg{width:20px;height:20px}
+.heronat .tools .ti.on{color:var(--gold)}
+.heronat .tools svg{stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.heronat .wrap{position:relative;z-index:4;min-height:inherit;display:flex;align-items:center}
+.heronat .inner{max-width:560px;padding:40px 0}
+.heronat .kick{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.heronat h1{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(34px,5.4vw,62px);line-height:1.04;letter-spacing:-.02em;color:var(--cream);margin:0 0 20px;text-shadow:0 2px 22px rgba(0,0,0,.55)}
+.heronat h1 .a{color:var(--sage)}
+.heronat .sub{max-width:460px;color:#d9e1da;font-size:clamp(15px,1.5vw,18px);line-height:1.6;margin:0 0 28px;text-shadow:0 1px 14px rgba(0,0,0,.65)}
+.heronat .hero-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.heronat .hero-cta .freeline{font-size:12.5px;color:#bccabf}
+@media(max-width:900px){.heronat .wx{left:auto;right:6%;top:7%}}
+@media(max-width:720px){
+  .heronat{min-height:clamp(470px,82vh,620px)}
+  .heronat .terrain img{object-position:56% 66%}
+  .heronat .scrim{background:linear-gradient(180deg,rgba(7,14,11,.70) 0%,rgba(7,14,11,.84) 55%,rgba(7,14,11,.95) 100%)}
+  .heronat .wx,.heronat .tools{display:none}
+  .heronat .score{right:5%;left:5%;bottom:6%;width:auto}
+  .heronat .inner{max-width:none}
 }
-@media(max-width:480px){.herobg .inner{padding:26px 0}.herobg .hero-cta{gap:12px}.herobg .hero-cta .freeline{width:100%}}
+@media(max-width:480px){.heronat .score{display:none}}
