@@ -269,3 +269,27 @@ footer .cp{width:100%;font-size:12px;color:var(--faint);margin-top:8px}
 .svg-cap{fill:#F8F7F3;font-family:'Manrope',sans-serif;font-weight:700}
 .svg-lab{fill:#B7E4C7;font-family:Inter,sans-serif}
 .svg-lab2{fill:#93A89B;font-family:Inter,sans-serif}
+.acad .defs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+@media(max-width:560px){.acad .defs{grid-template-columns:1fr}}
+.acad .def{background:linear-gradient(160deg,var(--surface),var(--surface-2));border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.acad .def .dt{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--lsage);margin-bottom:6px}
+.acad .def p{margin:0;font-size:14.5px;color:var(--muted)}
+.acad .checklist{background:linear-gradient(160deg,var(--surface),var(--surface-2));border:1px solid var(--line);border-radius:18px;padding:8px 24px;margin:26px 0}
+.acad .checklist .clabel{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--faint);margin:16px 0 4px}
+.acad .checklist .crow{display:flex;gap:13px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--muted);line-height:1.55}
+.acad .checklist .crow:last-child{border-bottom:none}
+.acad .checklist .crow .tk{color:var(--sage);font-weight:800;flex:none}
+.acad .checklist .crow b{color:var(--cream)}
+.acad .banner{text-align:center;margin:32px 0;padding:22px 20px;border-radius:14px;background:rgba(200,155,60,.07);border:1px solid var(--line-2)}
+.acad .banner p{margin:0;font-family:'Manrope';font-size:19px;font-weight:800;color:var(--cream);line-height:1.35}
+.acad .banner p .hl{color:var(--gold)}
+.acad .legend{background:linear-gradient(160deg,var(--surface),var(--surface-2));border:1px solid var(--line);border-radius:18px;padding:24px;margin:26px 0}
+.acad .legend .lh{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--faint);margin-bottom:16px}
+.acad .legend .item{display:flex;gap:12px;align-items:flex-start;padding:9px 0;font-size:14.5px;color:var(--muted)}
+.acad .legend .dot2{width:12px;height:12px;border-radius:50%;flex:none;margin-top:5px}
+.acad .legend b{color:var(--cream)}
+.acad .callout h3{font-family:'Manrope';font-size:20px;color:var(--cream);margin:2px 0 10px}
+.acad .callout .features{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin-top:14px}
+@media(max-width:560px){.acad .callout .features{grid-template-columns:1fr}}
+.acad .callout .features div{display:flex;gap:9px;align-items:center;font-size:14.5px;color:var(--muted)}
+.acad .callout .features .tk{color:var(--sage);font-weight:800}
