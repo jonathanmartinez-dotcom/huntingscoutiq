@@ -293,3 +293,10 @@ footer .cp{width:100%;font-size:12px;color:var(--faint);margin-top:8px}
 @media(max-width:560px){.acad .callout .features{grid-template-columns:1fr}}
 .acad .callout .features div{display:flex;gap:9px;align-items:center;font-size:14.5px;color:var(--muted)}
 .acad .callout .features .tk{color:var(--sage);font-weight:800}
+.statebanner{display:flex;align-items:center;gap:13px;justify-content:center;flex-wrap:wrap;background:linear-gradient(90deg,#142A20,#10231B);border-bottom:1px solid rgba(183,228,199,.18);color:#B7E4C7;text-decoration:none;padding:11px 18px;font-size:14px;text-align:center;line-height:1.45}
+.statebanner:hover{background:linear-gradient(90deg,#173026,#12281e)}
+.statebanner .sb-tag{background:#C89B3C;color:#141005;font-weight:800;font-size:11px;letter-spacing:.08em;padding:3px 9px;border-radius:100px}
+.statebanner .sb-txt{color:#cfe6d8}
+.statebanner .sb-txt b{color:#fff}
+.statebanner .sb-cta{color:#C89B3C;font-weight:700;white-space:nowrap}
+@media(max-width:600px){.statebanner{font-size:12.5px;gap:8px;padding:9px 12px}.statebanner .sb-cta{width:100%}}
